@@ -27,3 +27,16 @@
 .postDelete {
     display: none;
 }
+
+#className {
+    /*width:236px; this is same as 250 textarea*/
+    width:305px;
+    text-align: center;
+    color:darkslategray;
+}
+
+.all_input {
+    width:250px;
+    border-radius: 0;
+    resize: none;
+}
