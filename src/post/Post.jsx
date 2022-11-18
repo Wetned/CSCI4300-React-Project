@@ -18,10 +18,10 @@ const Post = props => {
         <div className="postContent">
           <form className="user_input">
             <label for="class">Class Name:</label><br/>
-              <input type="text" placeholder="Ex: CSCI 1301"></input>
+              <input id="className" type="text" placeholder="Ex: CSCI 1301"></input>
               <br/>
             <label for="notes">Notes:</label><br/>
-              <textarea id="notes" rows="10" placeholder="Personal notes"/>
+              <textarea lassName="all_input" id="notes" rows="10" placeholder="Personal notes"/>
               <br/>
           </form>
           <button onClick={changeStyle} id="deleteBtn" class="btn">delete</button>
