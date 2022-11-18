@@ -5,7 +5,7 @@ import Popup from "../Popup/Popup"
 export default function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
  
-  const togglePopup = () => {
+  function togglePopup() {
     setIsOpen(!isOpen);
   }
 
@@ -15,7 +15,7 @@ export default function TopBar() {
     { username: 'me', password: 'ow' }
   ];
 
-  const createUser = () => {
+  function createUser() {
     let inputUser = document.getElementById("createUser").value.toLowerCase();
     let inputPass = document.getElementById("createPass").value;
     let match = false;
@@ -169,7 +169,7 @@ export default function TopBar() {
                 <input type="password" name="password" id="createPass" class="text" required></input><br/>
               </div>
               <br/>
-              <button id="createUser" class="btn" onClick={createUser}>Submit</button>
+              <button id="createUser" class="btn" onClick={event => {createUser(); togglePopup();}}>Submit</button>
               </form>
              </>}
              handleClose={togglePopup}
