@@ -13,18 +13,19 @@ const Post = props => {
 
   return (
     <div className={style}>
-      <img className="postImg" src={appleBooks} alt=""/>
-      <div className="postContent">
-        <form className="user_input">
-          <label for="class">Class Name:</label><br/>
-            <input type="text" placeholder="Ex: CSCI 1301"></input>
-            <br/>
-          <label for="notes">Notes:</label><br/>
-            <textarea id="notes" rows="10" placeholder="Personal notes"/>
-            <br/>
-        </form>
-        <button onClick={changeStyle} id="deleteBtn" class="btn">delete</button>
-
+      <div classsName="flex-item">
+        <img className="postImg" src={appleBooks} alt=""/>
+        <div className="postContent">
+          <form className="user_input">
+            <label for="class">Class Name:</label><br/>
+              <input type="text" placeholder="Ex: CSCI 1301"></input>
+              <br/>
+            <label for="notes">Notes:</label><br/>
+              <textarea id="notes" rows="10" placeholder="Personal notes"/>
+              <br/>
+          </form>
+          <button onClick={changeStyle} id="deleteBtn" class="btn">delete</button>
+        </div>
       </div>
     </div>
   )
