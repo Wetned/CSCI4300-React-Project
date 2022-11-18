@@ -1,5 +1,6 @@
 import React from 'react'
 import "./post.css"
+import Popup from "../Popup/Popup"
 import appleBooks from "../apple_books.png"
 import { useState } from 'react'; 
 
@@ -10,6 +11,12 @@ const Post = props => {
   const changeStyle = () => {  
     setStyle("postDelete");
   };
+
+  const [isOpen, setIsOpen] = useState(false);
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
 
   return (
     <div className={style}>
@@ -24,7 +31,14 @@ const Post = props => {
             <br/>
         </form>
         <button onClick={changeStyle} id="deleteBtn" class="btn">delete</button>
-
+        <div>
+             <input type="button" value="more info" class="btn" id="details" onClick={togglePopup}/>
+             {isOpen && <Popup content={<>
+             <h1>For more details, please click <a href="http://www.bulletin.uga.edu/">here</a>.</h1>
+             </>}
+             handleClose={togglePopup}
+            />}
+            </div>
       </div>
     </div>
   )
