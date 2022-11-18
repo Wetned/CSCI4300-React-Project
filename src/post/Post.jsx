@@ -34,7 +34,10 @@ const Post = props => {
         <div>
              <input type="button" value="more info" class="btn" id="details" onClick={togglePopup}/>
              {isOpen && <Popup content={<>
-             <h1>For more details, please click <a href="http://www.bulletin.uga.edu/">here</a>.</h1>
+             <div>
+              <h3>More Details:</h3>
+              <p>Each class is unique, for more information on the class you have added, please click <a href="http://www.bulletin.uga.edu/">here</a>.</p>
+             </div>
              </>}
              handleClose={togglePopup}
             />}
