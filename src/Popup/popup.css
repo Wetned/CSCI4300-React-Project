@@ -11,12 +11,13 @@
     position: relative;
     width: 20%;
     margin: 0 auto;
-    height: 300px;
+    /* height: 300px; */
     max-height: 70vh;
     margin-top: calc(100vh - 85vh - 20px);
     background: #fff;
     border-radius: 4px;
-    padding: 20px;
+    /* padding: 20px; */
+    text-align: center;
     border: 1px solid #999;
     overflow: auto;
   }
@@ -25,7 +26,7 @@
     content: 'x';
     cursor: pointer;
     position: fixed;
-    right: 660px;
+    right: 1005px;
     top: calc(100vh - 85vh - 33px);
     background: #ededed;
     width: 25px;

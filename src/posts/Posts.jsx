@@ -1,16 +1,32 @@
 import React from 'react'
 import Post from '../post/Post'
+import { useState } from 'react'; 
 import "./posts.css"
 
  const Posts = props => {
-  return (
+
+  const [components, setComponents] = useState([""]); 
+  
+  function addComponent() { 
+      setComponents([...components, <Post/>]);    
+  } 
+  
+  return ( 
+    
     <div className="posts">
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
+      <div className="header">
+        <div id="div_list">
+        <h2>Add Classes</h2>
+        {/* <input type="text" name="item" id="usrInput"/> */}
+        <button onClick={addComponent} id="addBtn" class="btn">add</button>
+        </div>
     </div>
-  )
+      {components.map((item, i) => ( <Post name/> ))} 
+      
+    </div> 
+    
+  ) 
+
 }
 
 export default Posts;

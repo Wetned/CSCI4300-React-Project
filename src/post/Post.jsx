@@ -1,21 +1,31 @@
 import React from 'react'
 import "./post.css"
+import appleBooks from "../apple_books.png"
+import { useState } from 'react'; 
 
 const Post = props => {
+
+  const [style, setStyle] = useState("post");
   
+  const changeStyle = () => {  
+    setStyle("postDelete");
+  };
+
   return (
-    <div className="post">
-      <img className="postImg" src="./apple_books.png" alt=""/>
+    <div className={style}>
+      <img className="postImg" src={appleBooks} alt=""/>
       <div className="postContent">
         <form className="user_input">
           <label for="class">Class Name:</label><br/>
-            <input type="text" placeholder="Ex: CSCI 1301"></input><br/>
+            <input type="text" placeholder="Ex: CSCI 1301"></input>
+            <br/>
           <label for="notes">Notes:</label><br/>
-            <textarea id="notes" rows="10" placeholder="Personal notes"/><br/>
+            <textarea id="notes" rows="10" placeholder="Personal notes"/>
+            <br/>
         </form>
-        <button id="deleteBtn" class="btn">delete</button>
-      </div>
+        <button onClick={changeStyle} id="deleteBtn" class="btn">delete</button>
 
+      </div>
     </div>
   )
 }

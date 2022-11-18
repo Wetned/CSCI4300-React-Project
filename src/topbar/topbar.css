@@ -12,15 +12,20 @@
     flex: 3;
 }
 .topRight{
-  
+  margin-right: 10px;
 }
 .topCenter{
     flex: 6;
 }
 
+.loggedIn{
+  display: none;
+}
 
-
-
+.signUp{
+  background-color: rgba(214, 214, 214, 0.664);
+  
+}
 
 
 
