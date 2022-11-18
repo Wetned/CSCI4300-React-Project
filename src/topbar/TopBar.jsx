@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import "./topbar.css"
 import Popup from "../Popup/Popup"
 
@@ -38,6 +38,24 @@ export default function TopBar() {
       document.getElementById("signup").classList.add("loggedIn");
       document.getElementById("logout").classList.remove("loggedIn");
       document.getElementById("logout").classList.add("btn");
+      document.getElementById("addBtn").classList.add("btn");
+      document.getElementById("addBtn").classList.remove("loggedIn");
+      
+      let classNames = document.querySelectorAll("#className");
+        classNames.forEach(element => {
+          element.readOnly = false;
+        });
+        let notes = document.querySelectorAll("#notes");
+        notes.forEach(element => {
+          element.readOnly = false;
+        });
+        let deleteBtns = document.querySelectorAll("#deleteBtn");
+        deleteBtns.forEach(element => {
+          element.classList.remove("loggedIn");
+        });
+        
+        document.getElementById("addBtn").classList.add("btn");
+        document.getElementById("addBtn").classList.remove("loggedIn");
     }
   }
   }
@@ -67,6 +85,20 @@ export default function TopBar() {
         document.getElementById("signup").classList.add("loggedIn");
         document.getElementById("logout").classList.remove("loggedIn");
         document.getElementById("logout").classList.add("btn");
+        let classNames = document.querySelectorAll("#className");
+        classNames.forEach(element => {
+          element.readOnly = false;
+        });
+        let notes = document.querySelectorAll("#notes");
+        notes.forEach(element => {
+          element.readOnly = false;
+        });
+        document.getElementById("addBtn").classList.add("btn");
+        document.getElementById("addBtn").classList.remove("loggedIn");
+        let deleteBtns = document.querySelectorAll("#deleteBtn");
+        deleteBtns.forEach(element => {
+          element.classList.remove("loggedIn");
+        });
       }
     }
   }
@@ -80,7 +112,23 @@ export default function TopBar() {
         document.getElementById("signup").classList.remove("loggedIn");
         document.getElementById("logout").classList.add("loggedIn");
         document.getElementById("logout").classList.remove("btn");
+        let classNames = document.querySelectorAll("#className");
+        classNames.forEach(element => {
+          element.readOnly = true;
+        });
+        let notes = document.querySelectorAll("#notes");
+        notes.forEach(element => {
+          element.readOnly = true;
+        });
+        document.getElementById("addBtn").classList.remove("btn");
+        document.getElementById("addBtn").classList.add("loggedIn");
+ 
+        let deleteBtns = document.querySelectorAll("#deleteBtn");
+        deleteBtns.forEach(element => {
+          element.classList.add("loggedIn");
+        });
   }
+
 
   return (
     <>

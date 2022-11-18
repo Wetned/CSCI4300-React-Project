@@ -5,7 +5,7 @@ import "./posts.css"
 
  const Posts = props => {
 
-  const [components, setComponents] = useState([""]); 
+  const [components, setComponents] = useState([]); 
   
   function addComponent() { 
       setComponents([...components, <Post/>]);    
@@ -18,10 +18,10 @@ import "./posts.css"
         <div id="div_list">
         <h2>Add Classes</h2>
         {/* <input type="text" name="item" id="usrInput"/> */}
-        <button onClick={addComponent} id="addBtn" class="btn">add</button>
+        <button onClick={addComponent} id="addBtn" class="loggedIn">add</button>
         </div>
     </div>
-      {components.map((item, i) => ( <Post name/> ))} 
+      {components.map((item, i) => ( <Post/> ))} 
       
     </div> 
     
