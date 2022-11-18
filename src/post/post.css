@@ -1,0 +1,15 @@
+.post {
+    width: 18%;
+    margin: 20px;
+    display: inline-flex;
+    border-radius: 15px;
+    border-style: solid;
+    padding: 20px 0px 20px 50px;
+}
+
+.postContent{
+    display: flex;
+    flex-direction: column;
+    
+}
+

@@ -86,7 +86,7 @@ function logInFunction() {
 
 //add to list function
 function addList() {
-    let input = userInput.value;
+   let input = userInput.value;
     userInput.value = '';
 
     var node = document.createElement("li");
@@ -117,7 +117,7 @@ function addList() {
     var img = document.createElement("img");
     img.src = "images/image_filler.png";
     img.setAttribute("class", "marginTen");
-
+ 
     node.appendChild(img);
 
     node.appendChild(filler);

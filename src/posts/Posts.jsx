@@ -2,12 +2,15 @@ import React from 'react'
 import Post from '../post/Post'
 import "./posts.css"
 
-export default function Posts() {
+ const Posts = props => {
   return (
     <div className="posts">
+      <Post/>
       <Post/>
       <Post/>
       <Post/>
     </div>
   )
 }
+
+export default Posts;
