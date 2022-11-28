@@ -8,9 +8,18 @@ const Post = props => {
 
   const [style, setStyle] = useState("post");
   
-  const changeStyle = () => {  
+  const deletePost = () => {  
     setStyle("postDelete");
+    /*delete info from database function*/
   };
+
+  const savePost = () => {
+    /*save post function*/
+  }
+
+  const editPost = () => {
+    /*get post function depending on user first, then save post??*/
+  }
 
   const [isOpen, setIsOpen] = useState(false);
  
@@ -30,7 +39,9 @@ const Post = props => {
             <textarea id="notes" class="notes" rows="10" placeholder="Personal notes"/>
             <br/>
         </form>
-        <button onClick={changeStyle} id="deleteBtn" class="btn">delete</button>
+        <button onClick={savePost} id="saveBtn" class="post_button">save</button>
+        <button onClick={editPost} id="editBtn" class="post_button">edit</button> 
+        <button onClick={deletePost} id="deleteBtn" class="post_button">delete</button> 
         <div>
              <input type="button" value="more info" class="btn" id="details" onClick={togglePopup}/>
              {isOpen && <Popup content={<>
