@@ -1,10 +1,32 @@
-const data;
-const Post;
+// const data;
+// const Post;
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
+const User = require("../models/user");
+const Post = require("../models/post")
+const { db } = require("../models/user");
+const { application } = require("express");
+// const router = require('express').Router();
 
 const express = require('express');
 const router = express.Router();
 
 //creates a new post
+router.post("/add", (req, res) => {
+  const creator = req.body.creator;
+  const post = new Post({creator});
+  post.save()
+  .then(() => res.json('Post added!'))
+  .catch(err => res.status(400).json('Error: ' + err));
+  });
+
+//get all posts
+router.get('/',(req, res) => {
+  Post.find()
+  .then(posts => res.json(posts))
+  .catch(err => res.status(400).json('Err: ' + err));
+  });
+
 
 //get a post by ID
 router.get('/:id', (req, res) => {
@@ -30,7 +52,7 @@ router.post('/update/:id', (req, res) => (
             .then(() => res.json("Post updated!"))
             .catch(err => res.status(400).json("Error" + err));
     })
-    .catch(err => res.status(400).json("Error: " + err));
+    // .catch(err => res.status(400).json("Error: " + err));
 ));
 
 
@@ -70,3 +92,4 @@ router.delete('/:pid', postsControllers.deletePost);
 
 module.exports = router;
 */
+module.exports = router;

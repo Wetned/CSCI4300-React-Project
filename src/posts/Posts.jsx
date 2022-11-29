@@ -1,7 +1,17 @@
 import React from 'react'
 import Post from '../post/Post'
-import { useState } from 'react'; 
 import "./posts.css"
+import { useState, useEffect } from 'react'
+
+function GetData() {
+  const [data, setData] = useState({})
+  useEffect(() => {
+  fetch("/posts")
+  .then(res => res.json())
+  .then(data => setData(data))
+  }, [ ])
+  return data;
+    }
 
  const Posts = props => {
 
@@ -23,6 +33,7 @@ import "./posts.css"
         </div>
     </div>
       {components.map((item, i) => ( <Post/> ))} 
+      {GetData}
       
     </div> 
     

@@ -11,13 +11,13 @@ User.find()
 .catch(err => res.status(400).json('Err: ' + err));
 });
 
-router.post('/signup', (req, res) => {
-const username = req.body.username;
-const newUser = new User({username});
-newUser.save()
-.then(() => res.json('User added!'))
-.catch(err => res.status(400).json('Error: ' + err));
-});
+// router.post('/signup', (req, res) => {
+// const username = req.body.username;
+// const newUser = new User({username});
+// newUser.save()
+// .then(() => res.json('User added!'))
+// .catch(err => res.status(400).json('Error: ' + err));
+// });
 
 router.post("/register", async (req, res) => {
     const user = req.body;
@@ -39,11 +39,11 @@ router.post("/register", async (req, res) => {
 })
 router.post("/login", (req, res) => {
     const userLoggingIn = req.body;
-    User.findOne({username: userLoggingIn.username})
+    User.findOne({username: userLoggingIn.username.toLowerCase()})
     .then(dbUser => {
         if (!dbUser) {
             return res.json({
-                message: "Invalid Username or Password"
+                message: "Invalid Username" 
             })
         }
         bcrypt.compare(userLoggingIn.password, dbUser.password)
@@ -60,14 +60,13 @@ router.post("/login", (req, res) => {
                     (err, token) => {
                         if(err) return res.json({message: err})
                         return res.json({
-                            message: "Success",
-                            token: "Bearer " + token
+                            message: "Success"
                         })
                     }
                 )
             } else {
                 return res.json({
-                    message: "Invalid Username or Password"
+                    message: "Invalid Password"
                 })
             }
         })

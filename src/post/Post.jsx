@@ -14,18 +14,34 @@ const Post = props => {
   };
 
   const savePost = () => {
+    let notes = document.querySelectorAll("#notes");
+    notes.forEach(element => {
+      element.readOnly = true;
+    });
+    let classNames = document.querySelectorAll("#className");
+    classNames.forEach(element => {
+      element.readOnly = true;
+    });
     /*save post function*/
-  }
+  };
 
   const editPost = () => {
+    let notes = document.querySelectorAll("#notes");
+    notes.forEach(element => {
+      element.readOnly = false;
+    });
+    let classNames = document.querySelectorAll("#className");
+    classNames.forEach(element => {
+      element.readOnly = false;
+    });
     /*get post function depending on user first, then save post??*/
-  }
+  };
 
   const [isOpen, setIsOpen] = useState(false);
  
   const togglePopup = () => {
     setIsOpen(!isOpen);
-  }
+  };
 
   return (
     <div className={style}>

@@ -12,7 +12,8 @@ export default function TopBar() {
   const users = [
     { username: 'test', password: 'user' },
     { username: 'alan', password: 'secret' },
-    { username: 'me', password: 'ow' }
+    { username: 'me', password: 'ow' },
+    { username: 'new', password: 'password' }
   ];
 
   function createUser() {
@@ -54,6 +55,15 @@ export default function TopBar() {
           element.classList.remove("loggedIn");
         });
         
+        let saveBtns = document.querySelectorAll("#saveBtn");
+        saveBtns.forEach(element => {
+          element.classList.remove("loggedIn");
+        });
+        let editBtns = document.querySelectorAll("#editBtn");
+        editBtns.forEach(element => {
+          element.classList.remove("loggedIn");
+        });
+
         document.getElementById("addBtn").classList.add("btn");
         document.getElementById("addBtn").classList.remove("loggedIn");
     }
@@ -99,9 +109,19 @@ export default function TopBar() {
         deleteBtns.forEach(element => {
           element.classList.remove("loggedIn");
         });
+
+        let saveBtns = document.querySelectorAll("#saveBtn");
+        saveBtns.forEach(element => {
+          element.classList.remove("loggedIn");
+        });
+        let editBtns = document.querySelectorAll("#editBtn");
+        editBtns.forEach(element => {
+          element.classList.remove("loggedIn");
+        });
       }
     }
   }
+
   const logout = () => {
     users.forEach(element => {
       // alert(element.username + " " + element.password)
@@ -127,6 +147,17 @@ export default function TopBar() {
         deleteBtns.forEach(element => {
           element.classList.add("loggedIn");
         });
+
+        let saveBtns = document.querySelectorAll("#saveBtn");
+        saveBtns.forEach(element => {
+          element.classList.add("loggedIn");
+        });
+        let editBtns = document.querySelectorAll("#editBtn");
+        editBtns.forEach(element => {
+          element.classList.add("loggedIn");
+        });
+        
+        
   }
 
 
@@ -137,7 +168,7 @@ export default function TopBar() {
             <h2 id="app_name">classSearch</h2>
         </div>
         {/* eslint-disable-next-line */}
-        <form className="topCenter" id="login_form" action="javascript:void(0);">
+        <form className="topCenter" id="login_form" action="/login">
             <i class="fa-solid fa-user"></i>
             <input type="text" name="item" id="username" placeholder="username" required/>
             <i class="fa-solid fa-key"></i>
