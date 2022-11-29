@@ -34,4 +34,39 @@ router.post('/update/:id', (req, res) => (
 ));
 
 
+/*
+const express = require('express');
+const { check } = require('express-validator');
 
+const postsControllers = require('../controllers/post-controller');
+
+const router = express.Router();
+
+router.get('/:pid', postsControllers.getPostById);
+
+router.get('/user/:uid', postsControllers.getPostsByUserId);
+
+router.post(
+  '/',
+  [
+    check('title')
+      .not()
+      .isEmpty()
+  ],
+  postsControllers.createPost
+);
+
+router.patch(
+  '/:pid',
+  [
+    check('title')
+      .not()
+      .isEmpty()
+  ],
+  postsControllers.updatePost
+);
+
+router.delete('/:pid', postsControllers.deletePost);
+
+module.exports = router;
+*/
