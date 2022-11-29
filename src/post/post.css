@@ -49,3 +49,20 @@
 #details{
     margin: 10px;
 }
+
+.post_button {
+    margin: 5px;
+    padding: 10px;
+    width: 75px;
+    background: #ffffff;
+    color: #555;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 0;
+    border: 0;
+  }
+
+.post_button:hover {
+    /*background-color: #bbb;*/
+    background-color:#d9d9d9;
+}
