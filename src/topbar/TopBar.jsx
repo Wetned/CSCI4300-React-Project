@@ -1,13 +1,36 @@
 import React, {useState } from 'react';
 import "./topbar.css"
 import Popup from "../Popup/Popup"
+// import axios from "axios";
+
 
 export default function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  // const [register, setRegister] = useState(false);
  
   function togglePopup() {
     setIsOpen(!isOpen);
   }
+    // // set configurations
+    // const configuration = {
+    //   method: "post",
+    //   url: "https://nodejs-mongodb-auth-app.herokuapp.com/register",
+    //   data: {
+    //     username,
+    //     password,
+    //   },
+    // };
+
+  //  // make the API call
+  //  axios(configuration)
+  //  .then((result) => {
+  //    setRegister(true);
+  //  })
+  //  .catch((error) => {
+  //    error = new Error();
+  //  });
 
   const users = [
     { username: 'test', password: 'user' },
@@ -15,6 +38,14 @@ export default function TopBar() {
     { username: 'me', password: 'ow' },
     { username: 'new', password: 'password' }
   ];
+
+  const handleSubmit = (e) => {
+    // prevent the form from refreshing the whole page
+    e.preventDefault();
+    // make a popup alert showing the "submitted" text
+    // alert("Submited");
+  };
+
 
   function createUser() {
     let inputUser = document.getElementById("createUser").value.toLowerCase();
@@ -187,7 +218,7 @@ export default function TopBar() {
               <br/>
               <div>
                 <label for="name">username:</label>
-                <input type="text" name="name" id="createUser" class="text" required></input><br/>
+                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} name="name" id="createUser" class="text" required></input><br/>
                 <br/>
               </div>
               {/* <div>
@@ -197,10 +228,16 @@ export default function TopBar() {
               </div> */}
               <div>
                 <label for="password">password:</label>
-                <input type="password" name="password" id="createPass" class="text" required></input><br/>
+                <input type="password" value = {password}  onChange={(e) => setPassword(e.target.value)} name="password" id="createPass" class="text" required></input><br/>
               </div>
               <br/>
-              <button id="createUser" class="btn" onClick={event => {createUser(); togglePopup();}}>Submit</button>
+              <button id="createUser" class="btn" onClick={(e) => {handleSubmit(e); createUser(); togglePopup();}}>Submit</button>
+              {/* display success message
+              {register ? (
+                <p className="text-success">You Are Registered Successfully</p>
+              ) : (
+                <p className="text-danger">You Are Not Registered</p>
+              )} */}
               </form>
              </>}
              handleClose={togglePopup}

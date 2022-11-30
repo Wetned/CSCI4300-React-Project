@@ -37,8 +37,10 @@ console.log(err);
 
 // Import the routes
 const usersRoute = require('./routes/users.js')
+const postsRoute = require('./routes/posts.js')
 // const productsRoute = require('./routes/products.js')
 // app.use('/products', productsRoute);
 app.use('/users', usersRoute);
+app.use('/posts', postsRoute);
 
     

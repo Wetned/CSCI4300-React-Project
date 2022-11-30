@@ -11,14 +11,23 @@ const { application } = require("express");
 const express = require('express');
 const router = express.Router();
 
+router.post("/add", async (req, res) => {
+  const newPost = new Post({
+    title: req.body.title,
+    description: req.body.description
+  })
+  newPost.save()
+})
+
+
 //creates a new post
-router.post("/add", (req, res) => {
-  const creator = req.body.creator;
-  const post = new Post({creator});
-  post.save()
-  .then(() => res.json('Post added!'))
-  .catch(err => res.status(400).json('Error: ' + err));
-  });
+// router.post("/add", (req, res) => {
+//   const creator = req.body.creator;
+//   const post = new Post({creator});
+//   post.save()
+//   .then(() => res.json('Post added!'))
+//   .catch(err => res.status(400).json('Error: ' + err));
+//   });
 
 //get all posts
 router.get('/',(req, res) => {

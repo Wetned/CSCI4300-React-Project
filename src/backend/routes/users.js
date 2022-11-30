@@ -5,11 +5,18 @@ const { db } = require("../models/user");
 const { application } = require("express");
 const router = require('express').Router();
 
-router.get('/',(req, res) => {
-User.find()
-.then(users => res.json(users))
-.catch(err => res.status(400).json('Err: ' + err));
-});
+// router.get('/',(req, res) => {
+// User.find()
+// .then(users => res.json(users))
+// .catch(err => res.status(400).json('Err: ' + err));
+// });
+
+router.route('/').get((req, res) => {
+    // using .find() without a parameter will match on all user instances
+    User.find()
+        .then(allUsers => res.json(allUsers))
+        .catch(err => res.status(400).json('Error! ' + err))
+})
 
 // router.post('/signup', (req, res) => {
 // const username = req.body.username;
@@ -18,6 +25,14 @@ User.find()
 // .then(() => res.json('User added!'))
 // .catch(err => res.status(400).json('Error: ' + err));
 // });
+
+router.route('/new').post((req, res) => {
+    const newUser = new User(req.body)
+
+    newUser.save()
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json("Error! " + err))
+})
 
 router.post("/register", async (req, res) => {
     const user = req.body;
@@ -37,6 +52,7 @@ router.post("/register", async (req, res) => {
         res.json({message: "Success"})
     }
 })
+
 router.post("/login", (req, res) => {
     const userLoggingIn = req.body;
     User.findOne({username: userLoggingIn.username.toLowerCase()})
