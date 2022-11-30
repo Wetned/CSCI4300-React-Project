@@ -11,57 +11,42 @@ const { application } = require("express");
 const express = require('express');
 const router = express.Router();
 
+//Adds new posts
 router.post("/add", async (req, res) => {
   const newPost = new Post({
     title: req.body.title,
     description: req.body.description
   })
   newPost.save()
+  .then(post => res.json(post))
+  .catch(err => res.status(400).json("Error! " + err))
 })
 
-
-//creates a new post
-// router.post("/add", (req, res) => {
-//   const creator = req.body.creator;
-//   const post = new Post({creator});
-//   post.save()
-//   .then(() => res.json('Post added!'))
-//   .catch(err => res.status(400).json('Error: ' + err));
-//   });
-
-//get all posts
-router.get('/',(req, res) => {
+//Gets all posts
+router.get('/', async (req, res) => {
   Post.find()
   .then(posts => res.json(posts))
   .catch(err => res.status(400).json('Err: ' + err));
   });
 
 
-//get a post by ID
-router.get('/:id', (req, res) => {
-    Post.findById(req.params.id)
-        .then(post => res.json(post))
-        .catch(err => res.status(400).json("Error: " + err));
-});
-
-//delete a post by ID
-router.delete('/:id', (req, res) => {
-    Post.findById(req.params.id)
+//delete a post by title
+router.delete('/delete/:title', async (req, res) => {
+    Post.findOneAndDelete({title:req.params.title})
         .then(() => res.json("Post deleted."))
         .catch(err => res.status(400).json("Error: " + err));
 });
 
-//updates a post by ID
-router.post('/update/:id', (req, res) => (
-    Post.findByID(req.params.id)
+//updates a post by title
+router.post('/update/:title', async (req, res) => (
+    Post.findOne({title:req.params.title})
     .then(post => {
-        post.name = req.body.name;
-        post.content = req.body.content;
+        post.title = req.body.title,
+        post.description = req.body.description
         post.save()
             .then(() => res.json("Post updated!"))
             .catch(err => res.status(400).json("Error" + err));
     })
-    // .catch(err => res.status(400).json("Error: " + err));
 ));
 
 

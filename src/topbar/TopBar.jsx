@@ -36,7 +36,9 @@ export default function TopBar() {
     { username: 'test', password: 'user' },
     { username: 'alan', password: 'secret' },
     { username: 'me', password: 'ow' },
-    { username: 'new', password: 'password' }
+    { username: 'new', password: 'password' },
+    { username: 'Joseph', password: 'password' },
+    { username: 'random', password: 'password' }
   ];
 
   const handleSubmit = (e) => {

@@ -5,12 +5,7 @@ const { db } = require("../models/user");
 const { application } = require("express");
 const router = require('express').Router();
 
-// router.get('/',(req, res) => {
-// User.find()
-// .then(users => res.json(users))
-// .catch(err => res.status(400).json('Err: ' + err));
-// });
-
+//Gets all users
 router.route('/').get((req, res) => {
     // using .find() without a parameter will match on all user instances
     User.find()
@@ -18,25 +13,10 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error! ' + err))
 })
 
-// router.post('/signup', (req, res) => {
-// const username = req.body.username;
-// const newUser = new User({username});
-// newUser.save()
-// .then(() => res.json('User added!'))
-// .catch(err => res.status(400).json('Error: ' + err));
-// });
-
-router.route('/new').post((req, res) => {
-    const newUser = new User(req.body)
-
-    newUser.save()
-        .then(user => res.json(user))
-        .catch(err => res.status(400).json("Error! " + err))
-})
-
+//Registers new user
 router.post("/register", async (req, res) => {
     const user = req.body;
-    const takenUsername = await User.findOne({username: user.username})
+    const takenUsername = await User.findOne({username: user.username.toLowerCase()})
     
     if(takenUsername){
         res.json({message: "Username already taken"})
@@ -53,7 +33,7 @@ router.post("/register", async (req, res) => {
     }
 })
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
     const userLoggingIn = req.body;
     User.findOne({username: userLoggingIn.username.toLowerCase()})
     .then(dbUser => {
@@ -69,17 +49,20 @@ router.post("/login", (req, res) => {
                     id: dbUser._id,
                     username: dbUser.username,
                 }
-                jwt.sign(
-                    payload,
-                    process.env.JWT_SECRET,
-                    {expiresIn: 86400},
-                    (err, token) => {
-                        if(err) return res.json({message: err})
-                        return res.json({
-                            message: "Success"
-                        })
-                    }
-                )
+                return res.json({
+                    message: "Login Successful"
+                })
+                // jwt.sign(
+                //     payload,
+                //     process.env.JWT_SECRET,
+                //     {expiresIn: 86400},
+                //     (err, token) => {
+                //         if(err) return res.json({message: err})
+                //         return res.json({
+                //             message: "Success"
+                //         })
+                //     }
+                // )
             } else {
                 return res.json({
                     message: "Invalid Password"
