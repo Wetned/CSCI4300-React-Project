@@ -213,12 +213,12 @@ export default function TopBar() {
              <input type="button" value="Sign Up" class="btn" id="signup" onClick={togglePopup}/>
              {isOpen && <Popup content={<>
              {/* eslint-disable-next-line */}
-             <form className = "signUp" action="javascript:void(0);">
+             <form method = "post" className = "signUp" action="/users/register">
               <b>Create New User</b><br/>
               <br/>
               <div>
                 <label for="name">username:</label>
-                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} name="name" id="createUser" class="text" required></input><br/>
+                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} name="username" id="createUser" class="text" required></input><br/>
                 <br/>
               </div>
               {/* <div>
